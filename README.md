@@ -13,6 +13,6 @@ Quick Hull
              if pointLocation ==0,then pointLocation=0;
              else 
                 then pointLocation=-1;
-         <hr>
+        <div>-------------------------------------------------------------------------------------------------------------------</div>
 
     </div>
