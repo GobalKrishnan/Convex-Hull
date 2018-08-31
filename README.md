@@ -16,3 +16,13 @@ Quick Hull
 
     
    </div>
+   <div>
+     2,Find Distance between Point in 2d
+            
+             initialize: 3 point A,B,C each point have x and y
+             
+             distance=(B.x-A.x)*(A.y-C.y)-(B.y-A.y)*(A.x-C.x);
+             
+             if distance < 0 ,then distance=-distance;
+             
+   </div>
