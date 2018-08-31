@@ -3,7 +3,7 @@ Quick Hull
 
 <h2>Algorthim</h2>
     <div>
-       1,Find Location of Point in 2d:
+       1,Find Location of Point in 2d
              
              initialize: 3 point A,B,P each point have x and y
                         
@@ -13,6 +13,6 @@ Quick Hull
              if pointLocation ==0,then pointLocation=0;
              else 
                 then pointLocation=-1;
-        -----------------------------------------------------------------------------------------------------------------
 
-    </div>
+    
+   </div>
