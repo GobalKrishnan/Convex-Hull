@@ -1,154 +1,151 @@
 import java.awt.Point;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Scanner;
- 
-public class QuickHull
-{
-    public ArrayList<Point> quickHull(ArrayList<Point> points)
-    {
-        ArrayList<Point> convexHull = new ArrayList<Point>();
-        if (points.size() < 3)
-            return (ArrayList) points.clone();
- 
-        int minPoint = -1, maxPoint = -1;
-        int minX = Integer.MAX_VALUE;
-        int maxX = Integer.MIN_VALUE;
-        for (int i = 0; i < points.size(); i++)
-        {
-            if (points.get(i).x < minX)
-            {
-                minX = points.get(i).x;
-                minPoint = i;
-            }
-            if (points.get(i).x > maxX)
-            {
-                maxX = points.get(i).x;
-                maxPoint = i;
-            }
-        }
-        Point A = points.get(minPoint);
-        Point B = points.get(maxPoint);
-        convexHull.add(A);
-        convexHull.add(B);
-        points.remove(A);
-        points.remove(B);
- 
-        ArrayList<Point> leftSet = new ArrayList<Point>();
-        ArrayList<Point> rightSet = new ArrayList<Point>();
- 
-        for (int i = 0; i < points.size(); i++)
-        {
-            Point p = points.get(i);
-            if (pointLocation(A, B, p) == -1)
-                leftSet.add(p);
-            else if (pointLocation(A, B, p) == 1)
-                rightSet.add(p);
-        }
-        hullSet(A, B, rightSet, convexHull);
-        hullSet(B, A, leftSet, convexHull);
- 
-        return convexHull;
-    }
- 
-    public int distance(Point A, Point B, Point C)
-    {
-        int ABx = B.x - A.x;
-        int ABy = B.y - A.y;
-        int num = ABx * (A.y - C.y) - ABy * (A.x - C.x);
-        if (num < 0)
-            num = -num;
-        return num;
-    }
- 
-    public void hullSet(Point A, Point B, ArrayList<Point> set,
-            ArrayList<Point> hull)
-    {
-        int insertPosition = hull.indexOf(B);
-        if (set.size() == 0)
-            return;
-        if (set.size() == 1)
-        {
-            Point p = set.get(0);
-            set.remove(p);
-            hull.add(insertPosition, p);
-            return;
-        }
-        int dist = Integer.MIN_VALUE;
-        int furthestPoint = -1;
-        for (int i = 0; i < set.size(); i++)
-        {
-            Point p = set.get(i);
-            int distance = distance(A, B, p);
-            if (distance > dist)
-            {
-                dist = distance;
-                furthestPoint = i;
-            }
-        }
-        Point P = set.get(furthestPoint);
-        set.remove(furthestPoint);
-        hull.add(insertPosition, P);
- 
-        // Determine who's to the left of AP
-        ArrayList<Point> leftSetAP = new ArrayList<Point>();
-        for (int i = 0; i < set.size(); i++)
-        {
-            Point M = set.get(i);
-            if (pointLocation(A, P, M) == 1)
-            {
-                leftSetAP.add(M);
-            }
-        }
- 
-        // Determine who's to the left of PB
-        ArrayList<Point> leftSetPB = new ArrayList<Point>();
-        for (int i = 0; i < set.size(); i++)
-        {
-            Point M = set.get(i);
-            if (pointLocation(P, B, M) == 1)
-            {
-                leftSetPB.add(M);
-            }
-        }
-        hullSet(A, P, leftSetAP, hull);
-        hullSet(P, B, leftSetPB, hull);
- 
-    }
- 
-    public int pointLocation(Point A, Point B, Point P)
-    {
-        int cp1 = (B.x - A.x) * (P.y - A.y) - (B.y - A.y) * (P.x - A.x);
-        if (cp1 > 0)
-            return 1;
-        else if (cp1 == 0)
-            return 0;
-        else
-            return -1;
-    }
- 
-    public static void main(String args[])
-    {
-        System.out.println("Quick Hull Test");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of points");
-        int N = sc.nextInt();
- 
-        ArrayList<Point> points = new ArrayList<Point>();
-        System.out.println("Enter the coordinates of each points: <x> <y>");
-        for (int i = 0; i < N; i++)
-        {
-            int x = sc.nextInt();
-            int y = sc.nextInt();
-            Point e = new Point(x, y);
-            points.add(i, e);
-        }
- 
-        QuickHull qh = new QuickHull();
-        ArrayList<Point> p = qh.quickHull(points);
-        System.out
-                .println("The points in the Convex hull using Quick Hull are: ");
-        for (int i = 0; i < p.size(); i++)
-            System.out.println("(" + p.get(i).x + ", " + p.get(i).y + ")");
-        sc.close();
-    }
+
+public class QuickHull{
+	
+	public int pointLocation(Point A,Point B,Point P) {
+		int pl=(B.x-A.x)*(P.y-A.y)-(B.y-A.y)*(P.x-A.x);
+		if(pl>0)
+			return 1;
+		else if(pl==0)
+			return 0;
+		else
+			return -1;
+		
+	}
+	
+	public int distance(Point A,Point B,Point C) {
+		int num=(B.x-A.x)*(A.y-C.y)-(B.y-A.y)*(A.x-C.x);
+		if(num<0) {
+			num=-num;
+		}
+		return num;
+	}
+	
+	public void hullset(Point A,Point B,ArrayList<Point> set,ArrayList<Point> hull) {
+	   int insert=hull.indexOf(B);
+	   
+	   if(set.size()==0) {
+		   return;
+	   }
+	   if(set.size()==1) {
+		   Point p=set.get(0);
+		   set.remove(p);
+		   hull.add(insert,p);
+	       return;
+	   }
+	   
+	   int dist=Integer.MIN_VALUE;
+	   int furtherPoint=-1;
+	   
+	   for(int i=0;i<set.size();i++) {
+		   Point p=set.get(i);
+		   int distance=distance(A, B, p);
+		   
+		   if(distance>dist) {
+			   dist=distance;
+			   furtherPoint=i;
+		   }
+	   }
+	   Point p=set.get(furtherPoint);
+	   set.remove(furtherPoint);
+	   hull.add(insert,p);
+	   
+	   ArrayList<Point> leftsideAp=new ArrayList<>();
+	   
+	   for(int i=0;i<set.size();i++) {
+		   Point m=set.get(i);
+		   if(pointLocation(A, p, m)==1) {
+			   leftsideAp.add(m);
+		   }
+	   }
+	   
+	   
+	   ArrayList<Point> rightsidepB=new ArrayList<>();
+	   
+	   for(int i=0;i<set.size();i++) {
+		   Point m=set.get(i);
+		   if(pointLocation(p, B, m)==1) {
+			   rightsidepB.add(m);
+		   }
+	   }
+	   
+	   hullset(A, p, leftsideAp, hull);
+	   hullset(p, B, rightsidepB, hull);
+	   
+	   
+	}
+	
+	public ArrayList<Point> quickhull(ArrayList<Point> p){
+		
+		
+		ArrayList<Point> convexHull=new ArrayList<>();
+	    if(p.size()<3)
+	    	return (ArrayList<Point>) p.clone();
+		  
+		int minPoint=-1,maxPoint=-1;
+	       int minX=Integer.MAX_VALUE;
+	       int maxX=Integer.MIN_VALUE;
+	       
+	       for(int i=0;i<p.size();i++) {
+	    	   if(p.get(i).x<minX) {
+	    		   minX=p.get(i).x;
+	    		   minPoint=i;
+	    	   }
+	    	   if(p.get(i).x>maxX) {
+	    		   maxX=p.get(i).x;
+	    		   maxPoint=i;
+	    	   }
+	       }
+		
+	       Point A=p.get(minPoint);
+	       Point B=p.get(maxPoint);
+	       
+	      
+	       
+	       convexHull.add(A);
+	       convexHull.add(B);
+	       
+	       
+	       p.remove(A);
+	       p.remove(B);
+	       
+	       ArrayList<Point> leftside=new ArrayList<>();
+	       ArrayList<Point> rightside=new ArrayList<>();
+	       
+	       for(int i=0;i<p.size();i++) {
+	    	   Point P=p.get(i);
+	    	   if(pointLocation(A, B, P)==-1) {
+	    		   leftside.add(P);
+	    	   }
+	    	   if(pointLocation(A,B,P)==1) {
+	    		   rightside.add(P);
+	    	   }
+	       }
+	     
+	     hullset(A, B, rightside, convexHull);
+	     hullset(B, A, leftside, convexHull);
+	      
+		return convexHull;
+	}
+	
+	public QuickHull() {
+		ArrayList<Point> p=new ArrayList<>();
+		p.add(new Point(1,0));
+		p.add(new Point(0,0));
+		p.add(new Point(1,1));
+		
+	
+		p.add(new Point(0,1));
+	
+		ArrayList<Point> s=quickhull(p);
+		for(int i=0;i<s.size();i++) {
+			System.out.println(s.get(i).x+":"+s.get(i).y);
+		}
+		
+	}
+	public static void main(String[] args) {
+		new QuickHull();
+	}
 }
