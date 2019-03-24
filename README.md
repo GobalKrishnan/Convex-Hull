@@ -4,7 +4,7 @@ Quick Hull
 <h2>Algorthim</h2>
     <div>
        1,Find Location of Point in 2d<br>
-            <div>
+            <ol>
                 use 3 point as a,b,c with x,y<br>
                 *****************************<br>
                 difference between point a and b<br>
@@ -24,7 +24,7 @@ Quick Hull
                     if p > 0 ,then output= 1;<br>
                     if p = 0 ,then output= 0;<br>
                     if p < 0 ,then output=-1;  <br>
-           </div>
+           </ol>
        2,Find Distance of point in 2d<br>
        3,Perform hullSet<br>
        4,Perform QuicKHull<br>
