@@ -3,30 +3,30 @@ Quick Hull
 
 <h2>Algorthim</h2>
     <div>
-       1,Find Location of Point in 2d
+       1,Find Location of Point in 2d<br>
             <div>
-                use 3 point as a,b,c with x,y
-                *****************************
-                difference between point a and b
-                =================================
-                dx=b.x-a.x
-                dy=b.y-a.y
-                @@@@@@@@@@@@@@
-                difference between point a and c for pivot
+                use 3 point as a,b,c with x,y<br>
+                *****************************<br>
+                difference between point a and b<br>
+                =================================<br>
+                dx=b.x-a.x<br>
+                dy=b.y-a.y<br>
+                @@@@@@@@@@@@@@<br>
+                difference between point a and c for pivot<br>
                 ==========================================
-                sx=c.x-a.x;
-                sy=c.y-a.y;
-                @@@@@@@@@@@@@@
-                point value in int
-                ==================
-                p=(dx*sy)-(dy*sx)
-                condition,
-                    if p > 0 ,then output= 1;
-                    if p = 0 ,then output= 0;
-                    if p < 0 ,then output=-1;  
+                sx=c.x-a.x;<br>
+                sy=c.y-a.y;<br>
+                @@@@@@@@@@@@@@<br>
+                point value in int<br>
+                ==================<br>
+                p=(dx*sy)-(dy*sx)<br>
+                condition,<br>
+                    if p > 0 ,then output= 1;<br>
+                    if p = 0 ,then output= 0;<br>
+                    if p < 0 ,then output=-1;  <br>
            </div>
-       2,Find Distance of point in 2d
-       3,Perform hullSet
-       4,Perform QuicKHull
+       2,Find Distance of point in 2d<br>
+       3,Perform hullSet<br>
+       4,Perform QuicKHull<br>
     </div>
          
