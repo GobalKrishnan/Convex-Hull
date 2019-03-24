@@ -8,13 +8,13 @@ Quick Hull
                 use 3 point as a,b,c with x,y<br>
                 *****************************<br>
                 difference between point a and b<br>
-                =================================<br>
+                =============================<br>
                 <ol>
                     dx=b.x-a.x<br>
                     dy=b.y-a.y<br>
                 </ol>
                 difference between point a and c for pivot<br>
-                ==========================================<br>
+                ======================================<br>
                 <ol>
                     sx=c.x-a.x;<br>
                     sy=c.y-a.y;<br>
