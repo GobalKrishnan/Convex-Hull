@@ -13,7 +13,7 @@ Quick Hull
                 dy=b.y-a.y<br>
                 @@@@@@@@@@@@@@<br>
                 difference between point a and c for pivot<br>
-                ==========================================
+                ==========================================<br>
                 sx=c.x-a.x;<br>
                 sy=c.y-a.y;<br>
                 @@@@@@@@@@@@@@<br>
