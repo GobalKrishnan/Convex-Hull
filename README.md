@@ -12,7 +12,6 @@ Quick Hull
                 <ol>
                     dx=b.x-a.x<br>
                     dy=b.y-a.y<br>
-                @@@@@@@@@@@@@@<br>
                 </ol>
                 difference between point a and c for pivot<br>
                 ==========================================<br>
@@ -20,7 +19,6 @@ Quick Hull
                     sx=c.x-a.x;<br>
                     sy=c.y-a.y;<br>
                 </ol>
-                @@@@@@@@@@@@@@<br>
                 point value in int<br>
                 ==================<br>
                 <ol>
