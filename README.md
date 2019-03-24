@@ -6,7 +6,7 @@ Quick Hull
        1,Find Location of Point in 2d
             <div>
                 use 3 point as a,b,c with x,y
-                
+                *****************************
                 difference between point a and b
                 =================================
                 dx=b.x-a.x
@@ -20,11 +20,11 @@ Quick Hull
                 point value in int
                 ==================
                 p=(dx*sy)-(dy*sx)
-                
+                condition,
                     if p > 0 ,then output= 1;
                     if p = 0 ,then output= 0;
                     if p < 0 ,then output=-1;  
-            </div>
+           </div>
        2,Find Distance of point in 2d
        3,Perform hullSet
        4,Perform QuicKHull
