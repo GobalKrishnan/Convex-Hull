@@ -33,6 +33,32 @@ Quick Hull
            </ol>
        ###########################################################################<br>
        2,Find Distance of point in 2d<br>
+        <ol>
+                use 3 point as a,b,c with x,y<br>
+                *****************************<br>
+                difference between point a and b<br>
+                =============================<br>
+                <ol>
+                    dx=b.x-a.x<br>
+                    dy=b.y-a.y<br>
+                </ol>
+                difference between point a and c for pivot<br>
+                ======================================<br>
+                <ol>
+                    sx=c.x-a.x;<br>
+                    sy=c.y-a.y;<br>
+                </ol>
+                point value in int<br>
+                ==================<br>
+                <ol>
+                    n=(dx*sy)-(dy*sx)<br>
+                         condition,<br>
+                         <ol>
+                           if n<0 ,then output: n=-n
+                          </ol>
+                </ol>
+           </ol>
+      ##########################################################################<br>
        3,Perform hullSet<br>
        4,Perform QuicKHull<br>
     </div>
