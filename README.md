@@ -31,6 +31,7 @@ Quick Hull
                           </ol>
                 </ol>
            </ol>
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
        2,Find Distance of point in 2d<br>
        3,Perform hullSet<br>
        4,Perform QuicKHull<br>
